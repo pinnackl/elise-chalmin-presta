@@ -1,0 +1,21 @@
+CREATE TABLE `ps_customer_thread` (
+  `id_customer_thread` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_shop` int(11) unsigned NOT NULL DEFAULT '1',
+  `id_lang` int(10) unsigned NOT NULL,
+  `id_contact` int(10) unsigned NOT NULL,
+  `id_customer` int(10) unsigned DEFAULT NULL,
+  `id_order` int(10) unsigned DEFAULT NULL,
+  `id_product` int(10) unsigned DEFAULT NULL,
+  `status` enum('open','closed','pending1','pending2') NOT NULL DEFAULT 'open',
+  `email` varchar(128) NOT NULL,
+  `token` varchar(12) DEFAULT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_customer_thread`),
+  KEY `id_shop` (`id_shop`),
+  KEY `id_lang` (`id_lang`),
+  KEY `id_contact` (`id_contact`),
+  KEY `id_customer` (`id_customer`),
+  KEY `id_order` (`id_order`),
+  KEY `id_product` (`id_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8

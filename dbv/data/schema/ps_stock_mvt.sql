@@ -1,0 +1,20 @@
+CREATE TABLE `ps_stock_mvt` (
+  `id_stock_mvt` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id_stock` int(11) unsigned NOT NULL,
+  `id_order` int(11) unsigned DEFAULT NULL,
+  `id_supply_order` int(11) unsigned DEFAULT NULL,
+  `id_stock_mvt_reason` int(11) unsigned NOT NULL,
+  `id_employee` int(11) unsigned NOT NULL,
+  `employee_lastname` varchar(32) DEFAULT '',
+  `employee_firstname` varchar(32) DEFAULT '',
+  `physical_quantity` int(11) unsigned NOT NULL,
+  `date_add` datetime NOT NULL,
+  `sign` tinyint(1) NOT NULL DEFAULT '1',
+  `price_te` decimal(20,6) DEFAULT '0.000000',
+  `last_wa` decimal(20,6) DEFAULT '0.000000',
+  `current_wa` decimal(20,6) DEFAULT '0.000000',
+  `referer` bigint(20) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id_stock_mvt`),
+  KEY `id_stock` (`id_stock`),
+  KEY `id_stock_mvt_reason` (`id_stock_mvt_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8

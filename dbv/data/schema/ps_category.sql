@@ -1,0 +1,20 @@
+CREATE TABLE `ps_category` (
+  `id_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_parent` int(10) unsigned NOT NULL,
+  `id_shop_default` int(10) unsigned NOT NULL DEFAULT '1',
+  `level_depth` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `nleft` int(10) unsigned NOT NULL DEFAULT '0',
+  `nright` int(10) unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  `position` int(10) unsigned NOT NULL DEFAULT '0',
+  `is_root_category` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_category`),
+  KEY `category_parent` (`id_parent`),
+  KEY `nleftrightactive` (`nleft`,`nright`,`active`),
+  KEY `level_depth` (`level_depth`),
+  KEY `nright` (`nright`),
+  KEY `activenleft` (`active`,`nleft`),
+  KEY `activenright` (`active`,`nright`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
