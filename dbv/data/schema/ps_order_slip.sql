@@ -1,0 +1,20 @@
+CREATE TABLE `ps_order_slip` (
+  `id_order_slip` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `conversion_rate` decimal(13,6) NOT NULL DEFAULT '1.000000',
+  `id_customer` int(10) unsigned NOT NULL,
+  `id_order` int(10) unsigned NOT NULL,
+  `total_products_tax_excl` decimal(20,6) DEFAULT NULL,
+  `total_products_tax_incl` decimal(20,6) DEFAULT NULL,
+  `total_shipping_tax_excl` decimal(20,6) DEFAULT NULL,
+  `total_shipping_tax_incl` decimal(20,6) DEFAULT NULL,
+  `shipping_cost` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `amount` decimal(10,2) NOT NULL,
+  `shipping_cost_amount` decimal(10,2) NOT NULL,
+  `partial` tinyint(1) NOT NULL,
+  `order_slip_type` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_order_slip`),
+  KEY `order_slip_customer` (`id_customer`),
+  KEY `id_order` (`id_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8

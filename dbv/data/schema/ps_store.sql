@@ -1,0 +1,21 @@
+CREATE TABLE `ps_store` (
+  `id_store` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_country` int(10) unsigned NOT NULL,
+  `id_state` int(10) unsigned DEFAULT NULL,
+  `name` varchar(128) NOT NULL,
+  `address1` varchar(128) NOT NULL,
+  `address2` varchar(128) DEFAULT NULL,
+  `city` varchar(64) NOT NULL,
+  `postcode` varchar(12) NOT NULL,
+  `latitude` decimal(13,8) DEFAULT NULL,
+  `longitude` decimal(13,8) DEFAULT NULL,
+  `hours` varchar(254) DEFAULT NULL,
+  `phone` varchar(16) DEFAULT NULL,
+  `fax` varchar(16) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `note` text,
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_store`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
