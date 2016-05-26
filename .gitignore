@@ -1,6 +1,9 @@
 config/settings.inc.php
 dbv/config.php
 dbv/data/meta/revision
+img/tmp/
+modules/gamification/views/css/
+cache/
 
 *.sublime-project
 *.sublime-workspace
