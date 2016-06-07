@@ -4,6 +4,8 @@ if (!defined('_PS_VERSION_'))
  
 class ProductHighlight extends Module
 {
+    protected static $cache_top_products;
+
     public function __construct() {
         $this->name = 'producthighlight';
         $this->tab = 'front_office_features';
@@ -30,8 +32,7 @@ class ProductHighlight extends Module
         }
    
         return parent::install() &&
-            $this->registerHook('leftColumn') &&
-            $this->registerHook('header') &&
+            $this->registerHook('home') &&
             Configuration::updateValue('producthighlight', 'my friend');
     }
 
@@ -42,15 +43,29 @@ class ProductHighlight extends Module
         return true;
     }
 
-
-    public function hookDisplayLeftColumn($params) {
+    public function hookDisplayHome($params) {
+        $topProducts = $this->getTopProducts();
         $this->context->smarty->assign(
             array(
                 'my_module_name' => Configuration::get('producthighlight'),
-                'my_module_link' => $this->context->link->getModuleLink('producthighlight', 'display')
+                'my_module_link' => $this->context->link->getModuleLink('producthighlight', 'display'),
+                'top_products'   => $topProducts
             )
         );
       return $this->display(__FILE__, 'producthighlight.tpl');
+    }
+
+    protected function getTopProducts($params)
+    {
+        $result = ProductSale::getBestSalesLight((int)$params['cookie']->id_lang, 0, 3);
+        $currency = new Currency($params['cookie']->id_currency);
+        $usetax = (Product::getTaxCalculationMethod((int)$this->context->customer->id) != PS_TAX_EXC);
+        
+        foreach ($result as &$row) {
+            $row['price'] = Tools::displayPrice(Product::getPriceStatic((int)$row['id_product'], $usetax), $currency);
+        }
+
+        return $result;
     }
 }
 
