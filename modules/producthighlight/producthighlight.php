@@ -33,6 +33,7 @@ class ProductHighlight extends Module
    
         return parent::install() &&
             $this->registerHook('home') &&
+            $this->registerHook('displayHeader') &&
             Configuration::updateValue('producthighlight', 'my friend');
     }
 
@@ -43,8 +44,9 @@ class ProductHighlight extends Module
         return true;
     }
 
-    public function hookDisplayHome($params) {
+    public function hookDisplayHome($params) {                      
         $topProducts = $this->getTopProducts();
+            // var_dump($topProducts);exit;
         $this->context->smarty->assign(
             array(
                 'my_module_name' => Configuration::get('producthighlight'),
@@ -55,14 +57,23 @@ class ProductHighlight extends Module
       return $this->display(__FILE__, 'producthighlight.tpl');
     }
 
-    protected function getTopProducts($params)
+    public function hookHeader ($params) {
+        $this->context->controller->addJS(($this->_path).'js/jquery.slides.min.js');
+    }
+
+    protected function getTopProducts ($params)
     {
         $result = ProductSale::getBestSalesLight((int)$params['cookie']->id_lang, 0, 3);
         $currency = new Currency($params['cookie']->id_currency);
         $usetax = (Product::getTaxCalculationMethod((int)$this->context->customer->id) != PS_TAX_EXC);
-        
+
         foreach ($result as &$row) {
+            $sql = "SELECT * FROM ps_product_lang WHERE id_product = " . $row['id_product'];
+            if (!$resultProductLang = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql)) {
+                return false;
+            }
             $row['price'] = Tools::displayPrice(Product::getPriceStatic((int)$row['id_product'], $usetax), $currency);
+            $row['link_rewrite'] = $resultProductLang[0]["link_rewrite"];
         }
 
         return $result;
