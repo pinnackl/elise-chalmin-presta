@@ -59,6 +59,7 @@ class ProductHighlight extends Module
 
     public function hookHeader ($params) {
         $this->context->controller->addJS(($this->_path).'js/jquery.slides.min.js');
+        $this->context->controller->addJS('https://use.fontawesome.com/8791970594.js');
     }
 
     protected function getTopProducts ($params)

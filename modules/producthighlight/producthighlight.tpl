@@ -5,7 +5,7 @@
         console.log($("#slides"));
         $("#slides").slidesjs({
                 width: 940,
-                height: 528,
+                height: 350,
                 navigation: {
                     active: true,
                     effect: "slide"
@@ -60,7 +60,7 @@
         width: 13px;
         height: 0;
         padding-top: 13px;
-        background-image: url(/../img/pagination.png);
+        background-image: url('modules/producthighlight/img/pagination.png');
         background-position: 0 0;
         float: left;
         overflow: hidden;
@@ -92,15 +92,15 @@
                              alt="{$product.legend|escape:'html':'UTF-8'}"/>
                     </a>
                     {if !$PS_CATALOG_MODE}
-                    <p>
-                        <a href="{$product.link|escape:'html'}" title="{$product.legend|escape:'html':'UTF-8'}">
+                    <!-- <p> -->
+                        <!-- <a href="{$product.link|escape:'html'}" title="{$product.legend|escape:'html':'UTF-8'}"> -->
                             {$product.name|strip_tags:'UTF-8'|escape:'html':'UTF-8'}<br/>
                             {if !$PS_CATALOG_MODE}
                                 <!-- <span class="price">{$product.price}</span> -->
                                 <!-- {hook h="displayProductPriceBlock" product=$product type="price"} -->
                             {/if}
-                        </a>
-                    </p>
+                        <!-- </a> -->
+                    <!-- </p> -->
                     {/if}
                 </div>
                 {/foreach}
