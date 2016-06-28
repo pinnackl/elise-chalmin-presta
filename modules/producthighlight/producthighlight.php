@@ -76,7 +76,7 @@ class ProductHighlight extends Module
             $row['price'] = Tools::displayPrice(Product::getPriceStatic((int)$row['id_product'], $usetax), $currency);
             $row['link_rewrite'] = $resultProductLang[0]["link_rewrite"];
         }
-
+        // var_dump($result);die;
         return $result;
     }
 }

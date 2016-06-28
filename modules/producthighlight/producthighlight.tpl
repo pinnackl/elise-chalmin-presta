@@ -2,13 +2,11 @@
 
  <script>
     $(document).ready(function() {
-        console.log($("#slides"));
         $("#slides").slidesjs({
                 width: 940,
                 height: 350,
                 navigation: {
-                    active: true,
-                    effect: "slide"
+                    active: false,
                 },
                 pagination: {
                     active: true,
@@ -37,6 +35,15 @@
         margin: 6px 0 0;
         float: right;
         list-style: none;
+    }
+
+    #slides .slidesjs-previous {
+        margin-right: 5px;
+        float:left;
+    }
+    #slides .slidesjs-next {
+        margin-right: 5px;
+        float:left;
     }
 
     #slides a:hover, #slides a:active {
@@ -75,6 +82,16 @@
         color: #d22929;
         text-decoration: none;
     }
+
+    i.icon-chevron-right,
+    i.icon-chevron-left {
+        font-size: 20px;
+    }
+
+    i.icon-chevron-right:hover,
+    i.icon-chevron-left:hover {
+        color: #d22929;
+    }
 </style>
 
 <div id="best-sellers_home" class="block products_block">
@@ -86,6 +103,9 @@
         {if $top_products && $top_products|@count > 0}
             <ul class="product_images">
                 {foreach from=$top_products item=product name=myLoop}
+                <script type="text/javascript">
+                    console.log('plop');
+                </script>
                 <div id="slides">
                     <a href="{$product.link|escape:'html'}" title="{$product.legend|escape:'html':'UTF-8'}" class="content_img clearfix">
                             <img src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'home_default')|escape:'html'}"
@@ -102,6 +122,12 @@
                         <!-- </a> -->
                     <!-- </p> -->
                     {/if}
+                    <a href="#" class="slidesjs-previous slidesjs-navigation">
+                        <i class="icon-chevron-left icon-large"></i>
+                    </a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation">
+                        <i class="icon-chevron-right icon-large"></i>
+                    </a>
                 </div>
                 {/foreach}
             </ul>
