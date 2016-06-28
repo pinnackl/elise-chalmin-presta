@@ -4,7 +4,7 @@
     $(document).ready(function() {
         $("#slides").slidesjs({
                 width: 940,
-                height: 350,
+                height: 400,
                 navigation: {
                     active: false,
                 },
@@ -18,12 +18,25 @@
 <style>
     /* Prevent the slideshow from flashing on load */
     #slides {
-      display: none
+        display: none;
+        text-align: center;
+    }
+
+    span.product-title-slider {
+        color: #d22929;
+        font-size: 17px;
+        line-height: 23px;
+    }
+
+    span.product-price-slider {
+        font: 600 21px/26px "Open Sans", sans-serif;
+        color: #333;
+        display: block;
     }
 
     /* Show active item in the pagination */
     .slidesjs-pagination .active {
-      color:red;
+        color:red;
     }
 
     .slidesjs-pagination li {
@@ -102,26 +115,18 @@
     <div class="block_content">
         {if $top_products && $top_products|@count > 0}
             <ul class="product_images">
-                {foreach from=$top_products item=product name=myLoop}
                 <script type="text/javascript">
                     console.log('plop');
                 </script>
                 <div id="slides">
+                    {foreach from=$top_products item=product name=myLoop}
                     <a href="{$product.link|escape:'html'}" title="{$product.legend|escape:'html':'UTF-8'}" class="content_img clearfix">
-                            <img src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'home_default')|escape:'html'}"
+                            <img src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'slider_default')|escape:'html'}"
                              alt="{$product.legend|escape:'html':'UTF-8'}"/>
+                             <span class="product-title-slider">{$product.name}</span>
+                             <span class="product-price-slider">{$product.price_without_reduction}€</span>
                     </a>
-                    {if !$PS_CATALOG_MODE}
-                    <!-- <p> -->
-                        <!-- <a href="{$product.link|escape:'html'}" title="{$product.legend|escape:'html':'UTF-8'}"> -->
-                            {$product.name|strip_tags:'UTF-8'|escape:'html':'UTF-8'}<br/>
-                            {if !$PS_CATALOG_MODE}
-                                <!-- <span class="price">{$product.price}</span> -->
-                                <!-- {hook h="displayProductPriceBlock" product=$product type="price"} -->
-                            {/if}
-                        <!-- </a> -->
-                    <!-- </p> -->
-                    {/if}
+                    {/foreach}
                     <a href="#" class="slidesjs-previous slidesjs-navigation">
                         <i class="icon-chevron-left icon-large"></i>
                     </a>
@@ -129,7 +134,6 @@
                         <i class="icon-chevron-right icon-large"></i>
                     </a>
                 </div>
-                {/foreach}
             </ul>
         {else}
             <p>{l s='Pas de top disponible pour le moment' mod='producthiglights'}</p>
