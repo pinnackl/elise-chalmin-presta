@@ -23,9 +23,15 @@
     }
 
     span.product-title-slider {
-        color: #d22929;
+        display: block;
+        color: white;
         font-size: 17px;
         line-height: 23px;
+        position: absolute;
+        top: 32px;
+        left: 34%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 0px 10px;
     }
 
     span.product-price-slider {
@@ -42,6 +48,10 @@
     .slidesjs-pagination li {
         float: left;
         margin: 0 1px;
+    }
+
+    .slidesjs-container {
+        height: 320px !important;
     }
 
     .slidesjs-pagination {
@@ -115,9 +125,6 @@
     <div class="block_content">
         {if $top_products && $top_products|@count > 0}
             <ul class="product_images">
-                <script type="text/javascript">
-                    console.log('plop');
-                </script>
                 <div id="slides">
                     {foreach from=$top_products item=product name=myLoop}
                     <a href="{$product.link|escape:'html'}" title="{$product.legend|escape:'html':'UTF-8'}" class="content_img clearfix">
