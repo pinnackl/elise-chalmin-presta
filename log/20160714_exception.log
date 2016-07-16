@@ -1,0 +1,28 @@
+*ERROR* 	2016/07/14 - 16:25:15: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:25:15: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:25:18: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:25:19: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:25:35: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:26:30: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:26:33: Shop not found at line 404 in file classes/shop/Shop.php
+*ERROR* 	2016/07/14 - 16:28:44: Table 'ec_prestashop.ec_shop_url' doesn't exist<br /><br /><pre>SELECT s.id_shop, CONCAT(su.physical_uri, su.virtual_uri) AS uri, su.domain, su.main
+					FROM ec_shop_url su
+					LEFT JOIN ec_shop s ON (s.id_shop = su.id_shop)
+					WHERE (su.domain = 'dev.presta.com' OR su.domain_ssl = 'dev.presta.com')
+						AND s.active = 1
+						AND s.deleted = 0
+					ORDER BY LENGTH(CONCAT(su.physical_uri, su.virtual_uri)) DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/14 - 16:30:19: Table 'ec_prestashop.ec_shop_url' doesn't exist<br /><br /><pre>SELECT s.id_shop, CONCAT(su.physical_uri, su.virtual_uri) AS uri, su.domain, su.main
+					FROM ec_shop_url su
+					LEFT JOIN ec_shop s ON (s.id_shop = su.id_shop)
+					WHERE (su.domain = 'dev.presta.com' OR su.domain_ssl = 'dev.presta.com')
+						AND s.active = 1
+						AND s.deleted = 0
+					ORDER BY LENGTH(CONCAT(su.physical_uri, su.virtual_uri)) DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/14 - 16:31:23: Table 'ec_prestashop.ec_ps_shop_url' doesn't exist<br /><br /><pre>SELECT s.id_shop, CONCAT(su.physical_uri, su.virtual_uri) AS uri, su.domain, su.main
+					FROM ec_ps_shop_url su
+					LEFT JOIN ec_ps_shop s ON (s.id_shop = su.id_shop)
+					WHERE (su.domain = 'dev.presta.com' OR su.domain_ssl = 'dev.presta.com')
+						AND s.active = 1
+						AND s.deleted = 0
+					ORDER BY LENGTH(CONCAT(su.physical_uri, su.virtual_uri)) DESC</pre> at line 791 in file classes/db/Db.php
