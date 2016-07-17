@@ -1,0 +1,2 @@
+*ERROR* 	2016/07/17 - 17:07:51: Table 'ec_prestashop.ps_product_lang' doesn't exist<br /><br /><pre>SELECT * FROM ps_product_lang WHERE id_product = 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/17 - 17:07:57: Table 'ec_prestashop.ps_product_lang' doesn't exist<br /><br /><pre>SELECT * FROM ps_product_lang WHERE id_product = 1</pre> at line 791 in file classes/db/Db.php

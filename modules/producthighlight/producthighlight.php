@@ -45,7 +45,7 @@ class ProductHighlight extends Module
     }
 
     public function hookDisplayHome($params) {                      
-        $topProducts = $this->getTopProducts();
+        $topProducts = $this->getTopProducts($params);
             // var_dump($topProducts);exit;
         $this->context->smarty->assign(
             array(
@@ -69,7 +69,7 @@ class ProductHighlight extends Module
         $usetax = (Product::getTaxCalculationMethod((int)$this->context->customer->id) != PS_TAX_EXC);
 
         foreach ($result as &$row) {
-            $sql = "SELECT * FROM ps_product_lang WHERE id_product = " . $row['id_product'];
+            $sql = "SELECT * FROM ec_psproduct_lang WHERE id_product = " . $row['id_product'];
             if (!$resultProductLang = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql)) {
                 return false;
             }

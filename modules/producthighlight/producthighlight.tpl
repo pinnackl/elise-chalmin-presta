@@ -28,7 +28,7 @@
         font-size: 17px;
         line-height: 23px;
         position: absolute;
-        top: 32px;
+        top: 200px;
         left: 34%;
         background-color: rgba(0, 0, 0, 0.7);
         padding: 0px 10px;
